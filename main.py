@@ -1,11 +1,22 @@
-#TODO: Create a letter using starting_letter.txt 
-#for each name in invited_names.txt
-#Replace the [name] placeholder with the actual name.
-#Save the letters in the folder "ReadyToSend".
-    
-#Hint1: This method will help you: https://www.w3schools.com/python/ref_file_readlines.asp
-    #Hint2: This method will also help you: https://www.w3schools.com/python/ref_string_replace.asp
-        #Hint3: THis method will help you: https://www.w3schools.com/python/ref_string_strip.asp
+# TODO: Create a letter using starting_letter.txt
+# for each name in invited_names.txt
+# Replace the [name] placeholder with the actual name.
+# Save the letters in the folder "ReadyToSend".
 
-with open (".\input\letters\starting_letter.txt") as file:
-    print(file.readlines())
+# Hint1: This method will help you: https://www.w3schools.com/python/ref_file_readlines.asp
+# Hint2: This method will also help you: https://www.w3schools.com/python/ref_string_replace.asp
+# Hint3: THis method will help you: https://www.w3schools.com/python/ref_string_strip.asp
+
+with open(".\input\letters\starting_letter.txt") as file:
+    text = file.readlines()
+
+with open(".\input\\Names\invited_names.txt") as name:
+    name = name.readlines()
+
+for replace_text in text:
+    if replace_text.strip() == 'Dear [name],':
+        header = replace_text.strip()
+    for name_text in name:
+        replace_text = header.replace("[name]", name_text)
+        print (replace_text)
+print(name)
