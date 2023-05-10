@@ -15,7 +15,7 @@ with open(".\input\\Names\invited_names.txt") as name:
 
 for name_text in name:
     name_text = name_text.replace("\n", "")
-    with open(f".\output\ReadyToSend\\{name_text}.txt", "w") as letter:
+    with open(f".\output\ReadyToSend\\letter_for_{name_text}.txt", "w") as letter:
         for replace_text in text:
             # print(replace_text)
             if replace_text.strip() == 'Dear [name],':
