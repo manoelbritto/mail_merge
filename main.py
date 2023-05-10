@@ -13,10 +13,13 @@ with open(".\input\letters\starting_letter.txt") as file:
 with open(".\input\\Names\invited_names.txt") as name:
     name = name.readlines()
 
-for replace_text in text:
-    if replace_text.strip() == 'Dear [name],':
-        header = replace_text.strip()
-    for name_text in name:
-        replace_text = header.replace("[name]", name_text)
-        print (replace_text)
-print(name)
+for name_text in name:
+    name_text = name_text.replace("\n", "")
+    with open(f".\output\ReadyToSend\\{name_text}.txt", "w") as letter:
+        for replace_text in text:
+            # print(replace_text)
+            if replace_text.strip() == 'Dear [name],':
+                header = replace_text.strip()
+                replace_text = header.replace("[name]", name_text)
+
+            letter.write(replace_text)
